@@ -6,59 +6,10 @@
 <head>
 	<meta charset="UTF-8">
 	<style>
-		.cards {
-		display: flex;
-		gap: 2px;
-	   }
 
-.card {
-		width: 30px;
-		height: 100px;
-		background: red;
-		transition: 0.3s;
-		filter: brightness(0.5);
-
-		&:hover {
-			scale: 1.3;
-			filter: brightness(1);
-			z-index: 3;
-
-		/* next card */
-		& + * {
-			scale: 1.2;
-			filter: brightness(0.8);
-			z-index: 2;
-		}
-    /* next card after that */
-		& + * + * {
-			scale: 1.1;
-			filter: brightness(0.9);
-			z-index: 1;
-		}
-
-    /* previous card */
-		:has(+ &) {
-			scale: 1.2;
-			filter: brightness(0.9);
-			z-index: 2;
-		}
-    /* previous card before that */
-		:has(+ * + &) {
-			scale: 1.1;
-			filter: brightness(0.8);
-			z-index: 1;
-		}
-  } /* este es el que cierra &:hover  */
-} 
-		
 		body{
 			margin:0;
 			padding:0;
-			height: 100vh;
-			margin: 0;
-			display: grid;
-			place-items: center;
-			overflow: clip;
 		}
 		.atributospagina{
 			width:100vw;
@@ -110,46 +61,19 @@ Añadir el filtro de fondo añade el desenfoque del fondo.
 		}
 </style>
 </head>
-<body>
-	
-	<div class="cards">
-	<div class="card"></div>
-	<div class="card"></div>
-	<div class="card"></div>
-	<div class="card"></div>
-	<div class="card"></div>
-	<div class="card"></div>
-	<div class="card"></div>
-	<div class="card"></div>
-	<div class="card"></div>
-	<div class="card"></div>
-	<div class="card"></div>
-	<div class="card"></div>
-	<div class="card"></div>
-	<div class="card"></div>
-	<div class="card"></div>
-	<div class="card"></div>
-	<div class="card"></div>
-	<div class="card"></div>
-	<div class="card"></div>
-	<div class="card"></div>
-	<div class="card"></div>
-	<div class="card"></div>
-	<div class="card"></div>
-	<div class="card"></div>
-	<div class="card"></div>
-	</div>
-</body>
+
+
 
 <div class="atributospagina">
-	<img src="img/FONDO.jpg" alt="Foto de mi portfolio">
+	<img class="atributospagina img" src="img/FONDO.jpg" alt="Foto de mi portfolio">
 	
 	<!-- Puedes cambiar entre 'white' o 'black' el elemento class -->
 	<div class="e-box white">
 		FRAN MORILLAS
-		Desarrollo Web
 	</div>
 </div>
 </html>
+
+
 
 

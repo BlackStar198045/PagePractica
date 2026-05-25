@@ -3687,3 +3687,11 @@ input, select, textarea {
 			}
 
 	}
+	/* Truco para solucionar el margen de los enlaces externos en la galería */
+.gallery a[target="_blank"] {
+    width: 100% !important;
+}
+.gallery a[target="_blank"] img {
+    width: 100% !important;
+    object-fit: cover;
+}

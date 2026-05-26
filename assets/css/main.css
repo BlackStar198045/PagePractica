@@ -3702,22 +3702,19 @@ input, select, textarea {
     background: rgba(0, 0, 0, 0.45) !important;
     cursor: pointer;
     z-index: 10;
-    transition: background 0.3s ease;
-}
-
-.cartel-proyecto:hover {
-    background: rgba(0, 0, 0, 0.6) !important;
 }
 
 .cartel-proyecto h3 {
     color: #ffffff !important;
     margin: 0 !important;
-    font-size: 1.2rem !important;
+    font-size: 1.1rem !important;
     font-weight: bold !important;
+    text-align: center;
 }
 
 .cartel-proyecto p {
     color: #cccccc !important;
     margin: 5px 0 0 0 !important;
-    font-size: 0.8rem !important;
+    font-size: 0.75rem !important;
+    text-align: center;
 }

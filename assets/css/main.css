@@ -3687,28 +3687,10 @@ input, select, textarea {
 			}
 
 	}
-	/* --- ARREGLO DEFINITIVO DE PORTFOLIO (FONDOS CSS) --- */
-
-.proyecto-contenedor {
-    position: relative !important;
-    display: block !important;
-    background-size: cover !important;
-    background-position: center !important;
-    background-repeat: no-repeat !important;
-}
-
-/* Rutas corregidas con comillas simples normales */
-.bg-proyecto-1 {
-    background-image: url("../images/gallery/thumbs/01.jpg") !important;
-}
-
-.bg-proyecto-2 {
-    background-image: url("../images/gallery/thumbs/02.jpg") !important;
-}
-
-.enlace-proyecto {
-    text-decoration: none;
-    position: absolute;
+	/* --- CARTEL INTERACTIVO PARA PROYECTOS --- */
+.cartel-proyecto {
+    text-decoration: none !important;
+    position: absolute !important;
     top: 0;
     left: 0;
     width: 100%;
@@ -3717,24 +3699,24 @@ input, select, textarea {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: rgba(0, 0, 0, 0.45);
+    background: rgba(0, 0, 0, 0.45) !important;
     cursor: pointer;
     z-index: 10;
     transition: background 0.3s ease;
 }
 
-.enlace-proyecto:hover {
-    background: rgba(0, 0, 0, 0.6);
+.cartel-proyecto:hover {
+    background: rgba(0, 0, 0, 0.6) !important;
 }
 
-.enlace-proyecto h3 {
+.cartel-proyecto h3 {
     color: #ffffff !important;
     margin: 0 !important;
     font-size: 1.2rem !important;
-    font-weight: bold;
+    font-weight: bold !important;
 }
 
-.enlace-proyecto p {
+.cartel-proyecto p {
     color: #cccccc !important;
     margin: 5px 0 0 0 !important;
     font-size: 0.8rem !important;

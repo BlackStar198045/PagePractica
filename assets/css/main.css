@@ -3689,13 +3689,19 @@ input, select, textarea {
 	}
 	/* --- ARREGLO MAESTRO PARA PROYECTOS DEL PORTFOLIO --- */
 
-/* 1. Forzamos a que la imagen ocupe todo el ancho asignado por la plantilla */
+/* 1. Forzamos al CONTENEDOR a ocupar todo su ancho de cuadrícula asignado */
+.caja-proyecto {
+    width: 100% !important;
+}
+
+/* 2. Forzamos a que la imagen ocupe todo el espacio interior */
 .caja-proyecto img {
     width: 100% !important;
+    height: 100% !important;
     object-fit: cover;
 }
 
-/* 2. Estilos para el recuadro oscuro del enlace interno */
+/* 3. Estilos para el recuadro oscuro del enlace interno */
 .enlace-proyecto {
     text-decoration: none;
     position: absolute;

@@ -3687,17 +3687,27 @@ input, select, textarea {
 			}
 
 	}
-	/* --- ARREGLO MAESTRO PARA PROYECTOS DEL PORTFOLIO --- */
+	/* --- ARREGLO DEFINITIVO DE PORTFOLIO (FONDOS CSS) --- */
 
-/* 1. Forzamos a la IMAGEN interna a estirarse sin importar lo que diga el JS */
-.caja-proyecto img {
-    width: 100% !important;
-    min-width: 100% !important;
-    height: 100% !important;
-    object-fit: cover;
+/* Forzamos al enlace a actuar como un bloque contenedor con posición relativa */
+.proyecto-contenedor {
+    position: relative !important;
+    display: block !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
 }
 
-/* 2. Estilos para el recuadro oscuro del enlace interno */
+/* Asignamos las imágenes de fondo directamente desde CSS */
+.bg-proyecto-1 {
+    background-image: url('../images/gallery/thumbs/01.jpg') !important;
+}
+
+.bg-proyecto-2 {
+    background-image: url('../images/gallery/thumbs/02.jpg') !important;
+}
+
+/* Capa oscura interna que rellenará el 100% sin importar el tamaño */
 .enlace-proyecto {
     text-decoration: none;
     position: absolute;
@@ -3712,4 +3722,24 @@ input, select, textarea {
     background: rgba(0, 0, 0, 0.45);
     cursor: pointer;
     z-index: 10;
+    transition: background 0.3s ease;
+}
+
+/* Efecto hover opcional: se oscurece un poco más al pasar el ratón */
+.enlace-proyecto:hover {
+    background: rgba(0, 0, 0, 0.6);
+}
+
+/* Estilos limpios para los títulos y textos */
+.enlace-proyecto h3 {
+    color: #ffffff !important;
+    margin: 0 !important;
+    font-size: 1.2rem !important;
+    font-weight: bold;
+}
+
+.enlace-proyecto p {
+    color: #cccccc !important;
+    margin: 5px 0 0 0 !important;
+    font-size: 0.8rem !important;
 }

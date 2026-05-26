@@ -3689,7 +3689,6 @@ input, select, textarea {
 	}
 	/* --- ARREGLO DEFINITIVO DE PORTFOLIO (FONDOS CSS) --- */
 
-/* Forzamos al enlace a actuar como un bloque contenedor con posición relativa */
 .proyecto-contenedor {
     position: relative !important;
     display: block !important;
@@ -3698,16 +3697,15 @@ input, select, textarea {
     background-repeat: no-repeat !important;
 }
 
-/* Asignamos las imágenes de fondo directamente desde CSS */
+/* Rutas corregidas con comillas simples normales */
 .bg-proyecto-1 {
-    background-image: url('../images/gallery/thumbs/01.jpg') !important;
+    background-image: url("../images/gallery/thumbs/01.jpg") !important;
 }
 
 .bg-proyecto-2 {
-    background-image: url('../images/gallery/thumbs/02.jpg') !important;
+    background-image: url("../images/gallery/thumbs/02.jpg") !important;
 }
 
-/* Capa oscura interna que rellenará el 100% sin importar el tamaño */
 .enlace-proyecto {
     text-decoration: none;
     position: absolute;
@@ -3725,12 +3723,10 @@ input, select, textarea {
     transition: background 0.3s ease;
 }
 
-/* Efecto hover opcional: se oscurece un poco más al pasar el ratón */
 .enlace-proyecto:hover {
     background: rgba(0, 0, 0, 0.6);
 }
 
-/* Estilos limpios para los títulos y textos */
 .enlace-proyecto h3 {
     color: #ffffff !important;
     margin: 0 !important;

@@ -762,7 +762,6 @@
    API DE GEOLOCALIZACIÓN EN TIEMPO REAL (Añadido por Francisco)
    ========================================================================== */
 (function() {
-    // Esperamos a que el botón exista en el DOM
     window.addEventListener('load', () => {
         const btnGeo = document.getElementById('btn-geolocalizar');
         
@@ -790,16 +789,18 @@
                     const precision = posicion.coords.accuracy;
 
                     contenedor.innerHTML = `
-                        <div style="background: rgba(0,255,0,0.1); border: 1px solid #00ff00; padding: 1rem; border-radius: 4px; display: inline-block; text-align: left;">
-                            <p style="margin: 0; color: #00ff00; font-weight: bold;">¡Conexión establecida con éxito!</p>
-                            <ul style="margin: 5px 0 0 20px; padding: 0; list-style-type: square; color: #fff;">
+                        <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); padding: 1.5rem; border-radius: 6px; width: 100%; max-width: 500px; text-align: left; box-shadow: 0 4px 20px rgba(0,0,0,0.3); margin: 0 auto;">
+                            <p style="margin: 0 0 10px 0; color: #50fa7b; font-weight: bold; display: flex; align-items: center; gap: 8px;">
+                                🟢 Conexión establecida con éxito
+                            </p>
+                            <ul style="margin: 0; padding-left: 1.2rem; list-style-type: square; color: rgba(255,255,255,0.8); font-size: 0.9rem; line-height: 1.6;">
                                 <li><strong>Latitud:</strong> ${latitud.toFixed(6)}</li>
                                 <li><strong>Longitud:</strong> ${longitud.toFixed(6)}</li>
-                                <li><strong>Margen de error:</strong> ${Math.round(precision)} metros</li>
+                                <li><strong>Precisión:</strong> Margen de ~${Math.round(precision)} metros</li>
                             </ul>
-                            <p style="margin: 10px 0 0 0; text-align: center;">
-                                <a href="https://www.google.com/maps?q=${latitud},${longitud}" target="_blank" style="color: #fff; text-decoration: underline; font-size: 0.85rem;">
-                                    Ver mi posición real en Google Maps 🗺️
+                            <p style="margin: 15px 0 0 0; text-align: center;">
+                                <a href="https://www.google.com/maps?q=${latitud},${longitud}" target="_blank" style="color: #ffffff; text-decoration: underline; font-size: 0.85rem; font-weight: bold;">
+                                    Abrir ubicación real en Google Maps 🗺️
                                 </a>
                             </p>
                         </div>
@@ -819,7 +820,7 @@
                             mensajeError = "Se agotó el tiempo de espera para obtener la señal.";
                             break;
                     }
-                    contenedor.innerHTML = `<p style='color: #ff4d4d; font-weight: bold;'>⚠️ ${mensajeError}</p>`;
+                    contenedor.innerHTML = `<p style='color: #ff4d4d; font-weight: bold; margin: 0;'>⚠️ ${mensajeError}</p>`;
                 }
             });
         }

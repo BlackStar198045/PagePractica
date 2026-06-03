@@ -757,3 +757,71 @@
 					});
 
 })(jQuery);
+
+/* ==========================================================================
+   API DE GEOLOCALIZACIÓN EN TIEMPO REAL (Añadido por Francisco)
+   ========================================================================== */
+(function() {
+    // Esperamos a que el botón exista en el DOM
+    window.addEventListener('load', () => {
+        const btnGeo = document.getElementById('btn-geolocalizar');
+        
+        if (btnGeo) {
+            btnGeo.addEventListener('click', () => {
+                const contenedor = document.getElementById('resultado-geo');
+                contenedor.innerHTML = "<p style='color: #aaa;'>Solicitando acceso...</p>";
+
+                if (!navigator.geolocation) {
+                    contenedor.innerHTML = "<p style='color: #ff4d4d;'>Lo siento, tu navegador no soporta geolocalización.</p>";
+                    return;
+                }
+
+                const opciones = {
+                    enableHighAccuracy: true,
+                    timeout: 5000,
+                    maximumAge: 0
+                };
+
+                navigator.geolocation.getCurrentPosition(usuarioAcepto, usuarioRechazo, opciones);
+
+                function usuarioAcepto(posicion) {
+                    const latitud = posicion.coords.latitude;
+                    const longitud = posicion.coords.longitude;
+                    const precision = posicion.coords.accuracy;
+
+                    contenedor.innerHTML = `
+                        <div style="background: rgba(0,255,0,0.1); border: 1px solid #00ff00; padding: 1rem; border-radius: 4px; display: inline-block; text-align: left;">
+                            <p style="margin: 0; color: #00ff00; font-weight: bold;">¡Conexión establecida con éxito!</p>
+                            <ul style="margin: 5px 0 0 20px; padding: 0; list-style-type: square; color: #fff;">
+                                <li><strong>Latitud:</strong> ${latitud.toFixed(6)}</li>
+                                <li><strong>Longitud:</strong> ${longitud.toFixed(6)}</li>
+                                <li><strong>Margen de error:</strong> ${Math.round(precision)} metros</li>
+                            </ul>
+                            <p style="margin: 10px 0 0 0; text-align: center;">
+                                <a href="https://www.google.com/maps?q=${latitud},${longitud}" target="_blank" style="color: #fff; text-decoration: underline; font-size: 0.85rem;">
+                                    Ver mi posición real en Google Maps 🗺️
+                                </a>
+                            </p>
+                        </div>
+                    `;
+                }
+
+                function usuarioRechazo(error) {
+                    let mensajeError = "Ocurrió un error al intentar localizarte.";
+                    switch(error.code) {
+                        case error.PERMISSION_DENIED:
+                            mensajeError = "Permiso denegado. Debes permitir el acceso en la ventana de tu navegador.";
+                            break;
+                        case error.POSITION_UNAVAILABLE:
+                            mensajeError = "La ubicación no está disponible en este dispositivo.";
+                            break;
+                        case error.TIMEOUT:
+                            mensajeError = "Se agotó el tiempo de espera para obtener la señal.";
+                            break;
+                    }
+                    contenedor.innerHTML = `<p style='color: #ff4d4d; font-weight: bold;'>⚠️ ${mensajeError}</p>`;
+                }
+            });
+        }
+    });
+})();

@@ -3718,3 +3718,14 @@ input, select, textarea {
     font-size: 0.75rem !important;
     text-align: center;
 }
+/* --- Efecto Hover para el Botón de Geolocalización --- */
+#btn-geolocalizar {
+    font-size: 0.65rem !important; /* Achica la letra para que sea fina como "Send Message" */
+    letter-spacing: 0.15rem !important; /* Espaciado premium entre letras */
+}
+
+#btn-geolocalizar:hover {
+    background-color: #ffb48f !important; /* ⚠️ Cambia este color por el tono exacto de tu plantilla si es necesario */
+    color: #ffffff !important; /* El texto pasa a ser blanco al iluminarse */
+    transform: scale(1.02); /* Un pequeño efecto de pulsación muy elegante */
+}

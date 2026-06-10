@@ -878,7 +878,14 @@ document.addEventListener('DOMContentLoaded', () => {
         // 6. ¡Éxito en las validaciones!
         contenedorFeedback.textContent = '🚀 ¡Mensaje verificado! Procesando tu envío...';
         contenedorFeedback.style.color = '#2ecc71'; // Verde de éxito
+		// 6. ¡Éxito en las validaciones!
+        contenedorFeedback.textContent = '🚀 ¡Mensaje verificado! Enviando a la bandeja de entrada...';
+        contenedorFeedback.style.color = '#2ecc71'; // Verde de éxito
 
+        // Esperamos 2.5 segundos para que lea el mensaje de éxito antes de mandar los datos
+        setTimeout(() => {
+            formulario.submit(); // 🌟 ¡Aquí se envía el formulario de verdad!
+        }, 2500);
         // Simulamos un comportamiento de guardado real limpiando el formulario a los 2.5 segundos
         setTimeout(() => {
             formulario.reset();

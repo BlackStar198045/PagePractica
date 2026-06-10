@@ -826,3 +826,63 @@
         }
     });
 })();
+/* ==========================================================================
+   Validación Dinámica del Formulario de Contacto (DOM y Eventos Avanzados)
+   ========================================================================== */
+
+// Nos aseguramos de ejecutar el código una vez que el DOM esté completamente cargado
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // 1. Selección de los elementos del DOM
+    const formulario = document.querySelector('#contact-form');
+    const inputNombre = document.querySelector('#name');
+    const inputEmail = document.querySelector('#email');
+    const inputMensaje = document.querySelector('#message');
+    const contenedorFeedback = document.querySelector('#form-feedback');
+
+    // Control de seguridad: Si por alguna razón el formulario no está en la página actual, salimos de la función
+    if (!formulario) return;
+
+    // 2. Escuchamos el evento 'submit' al intentar enviar
+    formulario.addEventListener('submit', (event) => {
+        
+        // 🛑 Detener la recarga automática de la página que hace el navegador por defecto
+        event.preventDefault();
+        
+        // Limpiamos estilos y mensajes de validaciones anteriores
+        contenedorFeedback.textContent = '';
+        contenedorFeedback.style.color = '';
+
+        // 3. Capturamos los textos introducidos limpiando espacios en blanco a los lados (.trim)
+        const nombre = inputNombre.value.trim();
+        const email = inputEmail.value.trim();
+        const mensaje = inputMensaje.value.trim();
+
+        // Expresión regular estándar para comprobar que el email tiene estructura válida (texto@texto.dominio)
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        // 4. Validación de campos vacíos
+        if (nombre === '' || email === '' || mensaje === '') {
+            contenedorFeedback.textContent = '⚠️ Por favor, rellena todos los campos antes de enviar.';
+            contenedorFeedback.style.color = '#ff4d4d'; // Rojo de advertencia
+            return; // Corta la ejecución para que no avance más
+        }
+
+        // 5. Validación del formato de correo electrónico
+        if (!emailRegex.test(email)) {
+            contenedorFeedback.textContent = '✉️ El formato del correo electrónico no es válido. Compruébalo.';
+            contenedorFeedback.style.color = '#ff4d4d';
+            return;
+        }
+
+        // 6. ¡Éxito en las validaciones!
+        contenedorFeedback.textContent = '🚀 ¡Mensaje verificado! Procesando tu envío...';
+        contenedorFeedback.style.color = '#2ecc71'; // Verde de éxito
+
+        // Simulamos un comportamiento de guardado real limpiando el formulario a los 2.5 segundos
+        setTimeout(() => {
+            formulario.reset();
+            contenedorFeedback.textContent = '';
+        }, 2500);
+    });
+});

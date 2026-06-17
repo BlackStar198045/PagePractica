@@ -893,7 +893,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(response => {
             if (response.ok) {
                 // Si Formspree procesa el correo con éxito:
-                contenedorFeedback.textContent = '🚀 ¡Mensaje enviado con éxito directamente desde aquí!';
+                contenedorFeedback.textContent = '🚀 ¡Mensaje enviado con éxito!';
                 contenedorFeedback.style.color = '#2ecc71'; // Verde de éxito
                 formulario.reset(); // Limpiamos los campos para el siguiente mensaje
             } else {

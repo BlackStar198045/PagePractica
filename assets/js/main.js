@@ -875,21 +875,37 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // 6. ¡Éxito en las validaciones!
-        contenedorFeedback.textContent = '🚀 ¡Mensaje verificado! Procesando tu envío...';
-        contenedorFeedback.style.color = '#2ecc71'; // Verde de éxito
-		// 6. ¡Éxito en las validaciones!
-        contenedorFeedback.textContent = '🚀 ¡Mensaje verificado! Enviando a la bandeja de entrada...';
-        contenedorFeedback.style.color = '#2ecc71'; // Verde de éxito
+        // 6. ¡Éxito en las validaciones! Envíamos con FETCH (Asincronía pura)
+        contenedorFeedback.textContent = '⏳ Enviando mensaje de forma asíncrona...';
+        contenedorFeedback.style.color = '#3498db'; // Azul de carga
 
-        // Esperamos 2.5 segundos para que lea el mensaje de éxito antes de mandar los datos
-        setTimeout(() => {
-            formulario.submit(); // 🌟 ¡Aquí se envía el formulario de verdad!
-        }, 2500);
-        // Simulamos un comportamiento de guardado real limpiando el formulario a los 2.5 segundos
-        setTimeout(() => {
-            formulario.reset();
-            contenedorFeedback.textContent = '';
-        }, 2500);
+        // Empaquetamos los datos del formulario automáticamente
+        const datosFormulario = new FormData(formulario);
+
+        // Hacemos la petición al servidor de Formspree en segundo plano
+        fetch(formulario.action, {
+            method: 'POST',
+            body: datosFormulario,
+            headers: {
+                'Accept': 'application/json'
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                // Si Formspree procesa el correo con éxito:
+                contenedorFeedback.textContent = '🚀 ¡Mensaje enviado con éxito directamente desde aquí!';
+                contenedorFeedback.style.color = '#2ecc71'; // Verde de éxito
+                formulario.reset(); // Limpiamos los campos para el siguiente mensaje
+            } else {
+                // Si el servidor responde pero hay un fallo
+                contenedorFeedback.textContent = '❌ Hubo un problema en el servidor de envíos.';
+                contenedorFeedback.style.color = '#ff4d4d';
+            }
+        })
+        .catch(error => {
+            // Si el usuario no tiene internet o falla la red por completo
+            contenedorFeedback.textContent = '⚠️ Error de red. Revisa tu conexión a internet.';
+            contenedorFeedback.style.color = '#ff4d4d';
+        });
     });
 });

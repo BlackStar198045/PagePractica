@@ -894,7 +894,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (response.ok) {
                 // Si Formspree procesa el correo con éxito:
                 contenedorFeedback.textContent = '🚀 ¡Mensaje enviado con éxito!';
-                contenedorFeedback.style.color = '#2ecc71'; // Verde de éxito
+                contenedorFeedback.style.color = '#7cb164ea'; // Verde de éxito
                 formulario.reset(); // Limpiamos los campos para el siguiente mensaje
             } else {
                 // Si el servidor responde pero hay un fallo
@@ -908,4 +908,32 @@ document.addEventListener('DOMContentLoaded', () => {
             contenedorFeedback.style.color = '#ff4d4d';
         });
     });
+});
+// 🌟 Animación Asíncrona para la Foto de Perfil
+document.addEventListener('DOMContentLoaded', () => {
+    
+    const fotoPerfil = document.querySelector('.avatar-frame');
+
+    // Si la foto no existe en la página, no hacemos nada (seguridad)
+    if (!fotoPerfil) return;
+
+    // Creamos el "Observador de Intersección" (Asincronía pura)
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            // Cuando la foto entra en la pantalla...
+            if (entry.isIntersecting) {
+                console.log("🚀 Foto visible. Activando animación asíncrona.");
+                fotoPerfil.classList.add('visible'); // Añadimos la clase CSS que anima
+                
+                // Una vez visible, dejamos de observar para ahorrar recursos
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        // Configuramos para que se active cuando el 30% de la foto sea visible
+        threshold: 0.3 
+    });
+
+    // Empezamos a vigilar la foto
+    observer.observe(fotoPerfil);
 });

@@ -3729,3 +3729,30 @@ input, select, textarea {
     color: #2c2c2c !important;            /* El texto cambia a un gris oscuro suave para mejor contraste */
     transform: scale(1.02);
 }
+/* Estilo para el contenedor y la imagen circular */
+.avatar-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.avatar-frame {
+    width: 250px; /* Ajusta el tamaño a tu gusto */
+    height: 250px;
+    border-radius: 50%; /* 🌟 Esto hace el círculo perfecto */
+    object-fit: cover; /* Asegura que tu cara no se deforme */
+    border: 5px solid rgba(255, 255, 255, 0.1); /* Un borde sutil para que destaque */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Sombra para dar profundidad */
+    
+    /* Preparamos la animación */
+    opacity: 0;
+    transition: opacity 1.5s ease-out, transform 1s ease-out;
+    transform: translateY(20px); /* Empieza un poco más abajo */
+}
+
+/* Esta clase se añadirá con JavaScript para activarla */
+.avatar-frame.visible {
+    opacity: 1;
+    transform: translateY(0); /* Sube a su posición final */
+}

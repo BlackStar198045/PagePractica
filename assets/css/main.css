@@ -3729,30 +3729,41 @@ input, select, textarea {
     color: #2c2c2c !important;            /* El texto cambia a un gris oscuro suave para mejor contraste */
     transform: scale(1.02);
 }
-/* Estilo para el contenedor y la imagen circular */
+/* ==========================================================================
+   Custom Styles para la Foto de Perfil (Columna Lateral de Introducción)
+   ========================================================================== */
+
 .avatar-container {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start; /* Alinea la foto a la izquierda junto con tu texto */
     align-items: center;
-    padding: 2rem;
+    margin-top: 2rem;            /* Añade una separación elegante debajo del texto */
+    width: 100%;
 }
 
 .avatar-frame {
-    width: 250px; /* Ajusta el tamaño a tu gusto */
-    height: 250px;
-    border-radius: 50%; /* 🌟 Esto hace el círculo perfecto */
-    object-fit: cover; /* Asegura que tu cara no se deforme */
-    border: 5px solid rgba(255, 255, 255, 0.1); /* Un borde sutil para que destaque */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Sombra para dar profundidad */
+    width: 170px;                /* Tamaño ideal para que encaje perfecto en el lateral */
+    height: 170px;
+    border-radius: 50%;          /* Hace el recorte en círculo perfecto */
     
-    /* Preparamos la animación */
-    opacity: 0;
-    transition: opacity 1.5s ease-out, transform 1s ease-out;
-    transform: translateY(20px); /* Empieza un poco más abajo */
+    /* 🌟 SOLUCIÓN AL ENCUADRE: Enfoca la parte superior de la imagen (tu cabeza) */
+    object-fit: cover;
+    object-position: top center; 
+    
+    border: 4px solid rgba(255, 255, 255, 0.15); /* Borde sutil a juego con tu tema */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);   /* Le da volumen y profundidad */
+    
+    /* Efecto de animación suave al cargar */
+    animation: fadeInAvatar 1.5s ease-out;
 }
 
-/* Esta clase se añadirá con JavaScript para activarla */
-.avatar-frame.visible {
-    opacity: 1;
-    transform: translateY(0); /* Sube a su posición final */
+@keyframes fadeInAvatar {
+    from { 
+        opacity: 0; 
+        transform: scale(0.9); 
+    }
+    to { 
+        opacity: 1; 
+        transform: scale(1); 
+    }
 }

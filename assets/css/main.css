@@ -3743,7 +3743,7 @@ input, select, textarea {
 .avatar-frame {
     width: 100%;          /* 🌟 Obliga a la foto a ocupar todo el ancho del bloque intro */
     height: auto;         /* Mantiene la proporción original de la imagen */
-    max-height: 320px;    /* Limita la altura máxima para que no empuje el diseño hacia abajo */
+    max-height: 220px;    /* Limita la altura máxima para que no empuje el diseño hacia abajo */
     display: block;       /* Elimina espacios en blanco residuales debajo de la imagen */
     
     /* 🌟 SOLUCIÓN DEFINITIVA AL CORTE: Muestra tu rostro y hombros a la perfección */
@@ -3762,4 +3762,8 @@ input, select, textarea {
 @keyframes fadeInIntroPhoto {
     from { opacity: 0; }
     to { opacity: 1; }
+}
+/* Corrección de desbordamiento vertical para toda la web */
+#wrapper {
+    overflow-y: hidden !important;
 }

@@ -3742,11 +3742,9 @@ input, select, textarea {
 
 .avatar-frame {
     width: 100%;
-    height: 100%;
-    min-height: 220px;
-    max-height: 280px;
+    height: auto;
+    max-height: 260px;
     display: block;
-    /* Muestra la cara centrada y sin deformar desde la parte superior */
     object-fit: cover;
     object-position: top center;
     border-radius: 0;
@@ -3754,16 +3752,9 @@ input, select, textarea {
     box-shadow: none;
 }
 
-/* ==========================================================================
-   Bloqueo Global de Scroll Vertical (Elimina la barra de la seccion Elementos)
-   ========================================================================== */
-
-html, body, #page-wrapper, #wrapper {
-    overflow-y: hidden !important;
-}
-
-/* Permite que el panel de Elementos internamente no desborde hacia abajo */
-section.panel {
+/* 2. Control de Altura Exclusivo para la Sección Elementos */
+/* Evita que Elementos sea más alto que el resto sin romper el JS de la plantilla */
+section.panel.color4-alt {
     max-height: 100vh;
-    overflow-y: hidden !important;
+    overflow-y: auto;
 }

@@ -3734,30 +3734,36 @@ input, select, textarea {
    ========================================================================== */
 
 .avatar-container {
-    width: 85%;            /* Un poco más estrecho para reducir la altura proporcionalmente */
-    margin: 1.2rem auto 0; /* Centra la foto horizontalmente y reduce el margen superior */
+    width: 100%;
+    margin-top: 1.5rem;
     display: block;
     overflow: hidden;
-    border-radius: 8px;    /* Bordes ligeramente redondeados para un acabado muy elegante */
 }
 
 .avatar-frame {
     width: 100%;
-    height: 240px;         /* Altura fija suficiente para encuadrar rostro y hombros */
+    height: 100%;
+    min-height: 220px;
+    max-height: 280px;
     display: block;
+    /* Muestra la cara centrada y sin deformar desde la parte superior */
     object-fit: cover;
-    object-position: top center; /* Mantiene siempre la cabeza y rostro visibles arriba */
+    object-position: top center;
+    border-radius: 0;
     border: none;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Sombra suave para darle profundidad */
-    animation: fadeInIntroPhoto 1.2s ease-out;
+    box-shadow: none;
 }
 
-@keyframes fadeInIntroPhoto {
-    from { opacity: 0; }
-    to { opacity: 1; }
+/* ==========================================================================
+   Bloqueo Global de Scroll Vertical (Elimina la barra de la seccion Elementos)
+   ========================================================================== */
+
+html, body, #page-wrapper, #wrapper {
+    overflow-y: hidden !important;
 }
 
-/* Mantiene el wrapper bloqueado verticalmente */
-#wrapper {
+/* Permite que el panel de Elementos internamente no desborde hacia abajo */
+section.panel {
+    max-height: 100vh;
     overflow-y: hidden !important;
 }

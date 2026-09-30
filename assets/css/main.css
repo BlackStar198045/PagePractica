@@ -3763,3 +3763,8 @@ input, select, textarea {
     from { opacity: 0; }
     to { opacity: 1; }
 }
+pre {
+    max-height: 180px;
+    overflow-y: auto;
+    margin-bottom: 1rem;
+}
